@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'info_screen.dart';
 import 'options_screen.dart';
 import 'work_plan.dart';
 
@@ -279,6 +280,40 @@ class _AddWorkPlanScreenState extends State<AddWorkPlanScreen> {
             ),
           ),
         ],
+      ),
+
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.transparent,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Container(
+              width: 60.0,
+              height: 90.0,
+
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.teal,
+              ),
+
+              child: IconButton(
+                  padding: EdgeInsets.zero,
+                  iconSize: 50.0,
+                  color: Colors.white,
+
+                  icon: Icon(Icons.question_mark),
+
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => InfoScreen()));
+                  }
+              ),
+            ),
+          ],
+        ),
+
+
       ),
 
     );
