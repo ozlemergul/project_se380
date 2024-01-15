@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:se380_project/login_screen.dart';
+
+import 'login_screen.dart';
+import 'employee_data_screen.dart'; // Import the screen where you want to use documentId
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -15,24 +17,26 @@ class _RegisterState extends State<RegisterScreen> {
   TextEditingController passwordController = TextEditingController();
   String selectedRole = 'User'; // Default role
 
-  void registerUser() {
+  void registerUser() async {
     if (_formKey.currentState!.validate()) {
-      // Validate successful, send data to Firestore
       String email = emailController.text.trim();
       String password = passwordController.text.trim();
 
       // Add Firestore logic to store user data, including the role
-      FirebaseFirestore.instance.collection('Registers').add({
+      DocumentReference documentReference = await FirebaseFirestore.instance.collection('Registers').add({
         'email': email,
         'password': password,
         'role': selectedRole,
       });
 
-      // Navigate to the login screen
+      String documentId = documentReference.id;
+      print(documentId);
+
+      // Navigate to the login screen with documentId
       Navigator.pushReplacement(
         context,
         CupertinoPageRoute(
-          builder: (context) => const LoginScreen(title: 'Login',),
+          builder: (context) => LoginScreen(title: ''), // Pass documentId as a parameter
         ),
       );
     }

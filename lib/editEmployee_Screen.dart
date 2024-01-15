@@ -17,16 +17,19 @@ class _EditEmployeeScreenState extends State<EditEmployeeScreen> {
   TextEditingController _nameController = TextEditingController();
   TextEditingController _cardNumberController = TextEditingController();
   TextEditingController _hourlySalaryController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
 
   static String name = "";
   static String cardNumber = "";
   static String hourlySalary = "";
+  static String email = "";
 
   @override
   void dispose() {
     _nameController.dispose();
     _cardNumberController.dispose();
     _hourlySalaryController.dispose();
+    _emailController.dispose();
     super.dispose();
   }
 
@@ -79,6 +82,18 @@ class _EditEmployeeScreenState extends State<EditEmployeeScreen> {
               ),
             ),
           ),
+          Padding(
+            padding:
+            const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+            child: TextFormField(
+              controller: _emailController,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: EmployeeOperationsScreen.getEmail(),
+              ),
+            ),
+          ),
+
 
           const SizedBox(height:30),
 
@@ -93,6 +108,7 @@ class _EditEmployeeScreenState extends State<EditEmployeeScreen> {
                 name = _nameController.text;
                 cardNumber = _cardNumberController.text;
                 hourlySalary = _hourlySalaryController.text;
+                email = _emailController.text;
 
               });
               print("CARD number: " + cardNumber);
@@ -108,6 +124,10 @@ class _EditEmployeeScreenState extends State<EditEmployeeScreen> {
               if(hourlySalary != ""){
                 EmployeeOperationsScreen.hourlySalary = hourlySalary;
                 EmployeeOperationsScreen.changeHourlySalary();
+              }
+              if(email != ""){
+                EmployeeOperationsScreen.email = email;
+                EmployeeOperationsScreen.changeEmail();
               }
 
 

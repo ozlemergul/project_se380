@@ -104,7 +104,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
               onPressed: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => EmployeeDataScreen()));
+                    MaterialPageRoute(builder: (context) => const EmployeeDataScreen()));
               },
             ),
 

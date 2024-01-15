@@ -1,11 +1,7 @@
-
-
 import 'package:flutter/material.dart';
+import 'options_screen.dart';
 import 'profile_screen.dart';
 import 'info_screen.dart';
-import 'options_screen.dart';
-
-
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -18,10 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-
-      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(' '),
         backgroundColor: Colors.teal[400],

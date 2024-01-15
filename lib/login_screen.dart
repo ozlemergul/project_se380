@@ -4,12 +4,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:se380_project/register_screen.dart';
 import 'home_screen.dart';
-import 'employee_data_screen.dart'; // Import the EmployeeDataScreen
+import 'employee_data_screen.dart';
+import 'employee_view_screen.dart';
+// Import the EmployeeDataScreen
 
 class LoginScreen extends StatefulWidget {
+  final String title;
+
   const LoginScreen({Key? key, required this.title}) : super(key: key);
 
-  final String title;
 
   @override
   State<LoginScreen> createState() => _LoginState();
@@ -30,7 +33,6 @@ class _LoginState extends State<LoginScreen> {
         backgroundColor: Colors.teal,
       ),
       body: Center(
-        key: _formKey,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
           child: Column(
@@ -118,6 +120,7 @@ class _LoginState extends State<LoginScreen> {
                             .where('password', isEqualTo: password)
                             .where('role', isEqualTo: role)
                             .get();
+                        String documentId = "";
 
                         if (querySnapshot.docs.isNotEmpty) {
                           // Credentials are valid
@@ -134,7 +137,7 @@ class _LoginState extends State<LoginScreen> {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const EmployeeDataScreen(),
+                                builder: (context) => EmployeeViewScreen(),
                               ),
                             );
                           }
